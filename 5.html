@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Number Guessing Game</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+        }
+
+        .game-container {
+            width: 400px;
+            padding: 35px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            margin-bottom: 15px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-box {
+            padding: 14px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #00c6ff;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #0072ff;
+        }
+
+        .result {
+            margin-top: 25px;
+            min-height: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .attempts {
+            margin-top: 15px;
+            color: #ccc;
+        }
+
+        .reset-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <h1>🎯 Number Guessing Game</h1>
+
+        <p class="description">
+            Guess a number between <strong>1 and 100</strong>
+        </p>
+
+        <!-- FORM -->
+        <form id="guessForm">
+
+            <input
+                type="string"
+                id="guessInput"
+                class="input-box"
+                placeholder="Enter your guess"
+                min="1"
+                max="100"
+                required
+            >
+
+            <button type="submit" class="submit-btn">
+                Submit Guess
+            </button>
+
+        </form>
+
+        <!-- Result -->
+        <div id="result" class="result">Start guessing!</div>
+
+        <!-- Attempts -->
+        <div class="attempts">Attempts: <span id="attemptCount">0</span></div>
+
+        <!-- Reset -->
+        <button id="resetBtn" class="reset-btn" type="button">Reset Game</button>
+
+    </div>
+
+
+    <script>
+
+        let reset = document.querySelector('#resetBtn')
+reset.addEventListener('click' , function(e){ location.reload() })
+
+        let num = parseInt(Math.random()*100)
+        console.log(num)
+
+        var gue = 0;
+        let attempts = 0;
+
+        form = document.querySelector('form')
+form.addEventListener('submit' , function(e) {
+    e.preventDefault()
+    attempts = attempts + 1;
+    let guess = document.querySelector('#guessInput').value
+    console.log(guess)
+    if(guess == num ) {
+        document.querySelector('#result').innerHTML  = ' correct guess !!!!!!!! '
+        form.innerHTML = '';
+        
+        console.log( `${guess} is correct guess ` );
+        gue = 1;
+    }else if( isNaN(guess) ) {
+        document.querySelector('#result').innerHTML  =  ` ${guess } is not a number `
+        console.log( ` ${guess } is not a number ` ) 
+    }else if(gue != 1 ) {
+        document.querySelector('#result').innerHTML  =  ` wrong guess \n try againnnnnnnn !  `
+}
+
+    document.querySelector('#guessInput').value = '' 
+
+document.querySelector('.attempts').textContent  = ` Attempts: ${attempts} `
+
+
+
+
+    
+} ) 
+
+ 
+
+
+
+
+    </script>
+
+</body>
+
+</html>

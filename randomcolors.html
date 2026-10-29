@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color : #212121; color:#fff">
+
+    <h1> random colors </h1>
+
+    <div class="colours">
+    <canvas id="canvas" width="1000px" style="background-color: #fff;"></canvas>
+    <button id="start" style="color : green"> start </button>
+    <button id="stop" style="color : red"> stop </button>
+    </div>
+</body>
+
+<script>
+let canvas = document.querySelector('#canvas')
+var color_bg;
+let intervalId;
+// let start = document.getElementsByClassName("start")
+let start = document.querySelector("#start")
+let stop = document.querySelector("#stop")
+
+console.log(start)
+start.addEventListener('click' , function() {
+    console.log(canvas)
+
+const randomColor = function(){
+const hex = '0123456789ABCDEF'
+let color = '#'
+for(let i = 0 ; i < 6 ;  i++ ) {
+color = color + hex[Math.floor(Math.random()*16)]
+}
+return color;
+}
+if(!intervalId) {                                                                       // intervalid should not be null 
+
+
+    intervalId = setInterval(function() {                                         // interval returns interval id 
+    color_bg = randomColor()
+    console.log(color_bg)
+    canvas.style.backgroundColor = color_bg
+console.log(canvas.style)
+},100)
+
+}
+
+})
+
+
+stop.addEventListener('click' , function() {
+    clearInterval(intervalId)                                      // removes interval 
+    intervalId = null;
+})
+
+// const randomColor = function(){
+// const hex = '0123456789ABCDEF'
+// let color = '#'
+// for(let i = 0 ; i < 6 ;  i++ ) {
+// color = color + hex[Math.floor(Math.random()*16)]
+// }
+// return color;
+// }
+
+// setInterval(function() {
+//     color_bg = randomColor()
+//     console.log(color_bg)
+// canvas.style="background-color:color_bg"
+// },1000)
+
+</script>
+</html>

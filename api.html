@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+    <h1> Github Profile </h1>
+<!-- <button id="show"> show </button> -->
+ <form id="source_URL">
+
+            <input
+                type="string"
+                id="url"
+                class="input-box"
+                placeholder="Enter url"
+                required
+            >
+
+            <button type="submit" class="submit-btn">
+                Submit Guess
+            </button>
+
+        </form>
+    <!-- <div> 
+        <img style="width: 200px;" src=""> User Avatar </img>
+        <ul class="info" id="user_info" >
+                <li class="name"> name : </li>
+                <li class="followers"> followers : </li>
+                <li class="node_id"> node_id : </li>
+        </ul>
+        
+    </div> -->
+</body>
+
+<script>
+let user 
+let input_URL;
+let search = document.querySelector("#source_URL")
+
+// function for information 
+
+function getInfo(div) {
+let xhr = new XMLHttpRequest();
+const requestURL = input_URL
+xhr.open('GET',requestURL)
+xhr.send();
+var response_1;
+console.log(" here ")
+xhr.onreadystatechange = ()=> {
+    console.log(xhr.readyState)
+    let responseText = this.responseText
+    
+    if(xhr.readyState === 4 ) {
+    //     console.log(xhr.responseText)
+    response_1 = xhr.responseText;
+        data  = JSON.parse(response_1)
+
+        console.log(data)
+        console.log(data.login)
+        console.log(data.followers)
+        console.log(data.node_id)
+        console.log(data.avatar_url)
+        user = data
+        console.log(div)
+        div.innerHTML= `<div> 
+        <img style="width: 200px;" src=${data.avatar_url}> User Avatar </img>
+        <ul class="info" id="user_info" >
+                <li class="name"> name : ${data.login}</li>
+                <li class="followers"> followers : ${data.followers}</li>
+                <li class="node_id"> node_id : ${data.node_id}</li>
+        </ul>
+        
+    </div> `
+
+    }
+}
+}
+
+search.addEventListener('submit' , function (e) {
+    
+       e.preventDefault()
+        input_URL = document.querySelector("#url").value
+        console.log(input_URL)
+    let div = document.createElement('div')
+    div.className = "info"
+    div.id = "user_info"
+    // div.innerHTML = '<img class="avatar" style="width: 200px;" src="https://avatars.githubusercontent.com/u/11613311?v=4"> User Avatar </img><ul class="info" id="user_info" ><li class="name"> name : </li><li class="followers"> followers : </li><li class="node_id"> node_id : </li></ul>'
+    
+    getInfo(div);
+    // div.innerHTML = '<img class="avatar" style="width: 200px;" src=`${user.avatar_yrl}`> User Avatar </img><ul class="info" id="user_info" ><li class="name"> `username : ${user.login}` </li><li class="followers"> `followers : ${user.followers}` </li><li class="node_id"> `node id  : ${user.node_id}`</li></ul>'
+    console.log(div.innerHTML)
+    document.body.appendChild(div)
+}
+)
+
+
+// let search = document.querySelector("#source_URL")
+// search.addEventListener('submit' , showInfo);
+
+    
+</script>
+</html>

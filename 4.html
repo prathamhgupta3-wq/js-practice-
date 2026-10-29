@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Chai aur code | Dom </title>
+</head>
+<body style="background-color: rgb(231, 191, 236); color : bluevoilet">
+    <h1 style="color : blueviolet"> rittu pittu </h1>
+    <ul class="language" style="color:blueviolet">
+        <li> javascript </li>
+        </ul>
+</body>
+
+<script>
+    function addLanguage(langName) {
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+
+    addLanguage(" python ")
+    addLanguage(" typescript ")
+
+    // attaching this contains travese  
+
+    function addOptiLanguage(langName) {
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+
+    addOptiLanguage(' golang ')
+
+    // const secondlang = document.querySelectorAll("li:nth-child(2)")
+    const secondlang = document.querySelector("li:nth-child(2)")
+    // secondlang.innerHTML = " Mojo "
+    console.log(secondlang)
+    const newli = document.createElement('li')
+    newli.textContent = " Mojo "
+    secondlang.replaceWith(newli)
+    
+    const rittu = document.createElement('li')
+    rittu.textContent = " pattu "
+    document.querySelector("li:nth-child(3)").replaceWith(rittu)
+    document.querySelector("li:nth-child(4)").outerHTML = '<li> pattu </li>'
+
+    document.querySelector("li:nth-child(1)").remove()
+    
+    </script>
+</html>

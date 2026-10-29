@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai aur code </title>
+</head>
+<body style="background-color : #212121; color : #fff ">
+    <div class="parents"> 
+            <div class="day"> Monday </div>
+            <div class="day"> Tuesday </div>
+            <div class="day"> Wednesay </div>
+            <div class="day"> Thursday </div>
+    </div>
+</body>
+
+<script>
+    const parent = document.querySelector('.parents')
+    console.log(parent)
+    console.log(parent.children)                 // will give html collection ie of all children   
+    console.log(parent.children[1].innerHTML)
+
+    const rittu = Array.from(parent.children)
+    rittu.forEach( (item)=>{ item.style="color:red"})
+
+    console.log(parent.firstElementChild)
+    console.log(parent.lastElementChild)
+
+    document.querySelector('.day');
+    const day1 = document.querySelector('.day');          // query slector is expensive operation and dom is tree structure traversing is expensive to optimize 
+    console.log(day1)                                             // // query slector is expensive operation and dom is tree structure traversing is expensive to optimize 
+    console.log(day1.parentElement)                             // directly jump to paremt dont tavese tree again query selector needs time 
+    console.log(day1.nextElementSibling)
+
+    console.log("Nodes : " , parent.childNodes);                        // 9 node more coz also count each as node  element  comments are alo having seprate significance 
+     
+
+
+</script> 
+</html>
+
+

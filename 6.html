@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: lavenderblush">
+
+
+    <h1> rituja my girlfen </h1>
+<div>
+    <ul class="images">
+
+        <li> <img width="150px" id="image1"src="/home/pratham/Downloads/Snapchat-1297294364.jpg.jpeg"></li>
+        <li> <img width="150px" id="image2" src="/home/pratham/Downloads/IMG_20260802_184314578_HDR.jpg.jpeg"></li>
+        <li> <img width="150px" id="image3" src="/home/pratham/Downloads/WhatsApp Image 2026-07-26 at 6.31.23 PM.jpeg"></li>
+        <li> <img width="150px" id="image4" src="/home/pratham/Downloads/IMG_20260802_191620395_HDR.jpg.jpeg"></li>
+        <li> <img width="150px" id="image5" src="/home/pratham/Downloads/IMG_20260802_191302736_HDR.jpg.jpeg"></li>
+        <li> <img width="150px" id="image6" src="/home/pratham/Downloads/IMG_20260802_191623029.jpg.jpeg"></li>
+        <li> <a  class="google" id="google" herf="https://www.google.com" > Google </a></li>
+
+    </ul>
+</div>
+
+
+<script>
+
+let li = document.querySelectorAll('li')
+
+let images = document.querySelector('.images')
+
+console.log(li)
+console.log(images)
+
+ 
+// that false written is by default also callled as bubble it is propagation 
+ 
+// # learn more about propagation 
+
+
+images.addEventListener('click' , function(e){
+     e.stopPropagation()
+    // console.log(e)
+    console.log(' clicked whole area ')
+
+},false)                  
+
+
+li[0].addEventListener('click' , function(e){
+    e.stopPropagation();
+    // console.log(e)
+    console.log(' clicked 1st image  ')
+
+},false)
+
+// the element i will hit is target if i use parentNode then it is li tag and if i wanna remove it i have two methids 
+
+// images.addEventListener('click' , function(e) {
+
+//     let target = e.target                // area which will be clicked 
+//     target.parentNode.remove()               // target node rittu parent node which is li 
+//     alert( target.id + '  will be removed ' )
+
+// })
+
+
+
+// images.addEventListener('click' , function(e) {
+
+
+//     let target = e.target                // area which will be clicked 
+//     let removeIt = target.parentNode               // target node rittu parent node which is li 
+    
+//     removeIt.parentNode.removeChild(removeIt)
+//     alert( target.id + '  will be removed ' )
+
+// })
+
+
+
+
+// rittu in above i click any where elae li tag gets selected so have to check image tag only       
+
+// rittu ul 
+
+images.addEventListener('click' , function(e) {
+
+    
+    let target = e.target                // area which will be clicked 
+    
+    console.log(target.tagName)
+    if( target.tagName  === 'IMG' ) {
+
+
+    let removeIt = target.parentNode               // target node rittu parent node which is li 
+    
+    removeIt.parentNode.removeChild(removeIt)
+    alert( target.id + '  will be removed ' )
+
+    console.log(target.tagName)
+
+    }
+
+
+})
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
